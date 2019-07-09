@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+//Company colours
+$background-color: #ffffff;
+$content-color: #e6e7e9;
+$content-highlight: #89d5ed;
+
+//globally used to flex everything to centres.
+//Can be removed from the slab when content is added
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+//globally telling all three responsive UI's to centre the content
+// .content {
+//   @include flex-center();
+// }
+
+//background color
+body {
+  background-color: $background-color;
+}
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  //used a function to prevent code reuse
+  //this gives all of the slab properties to all types of slab
+  @mixin slab {
+    @include flex-center();
+    width: 90%;
+    margin: 1%;
+    height: 100px;
+    background-color: $content-color;
+    border: 5px solid #111111;
+    &:hover {
+      background-color: $content-highlight;
+    }
+  }
+  #slab-full {
+    @include flex-center();
+    @include slab();
+  }
+  #slab-medium {
+    @include flex-center();
+    @include slab();
+  }
+  #slab-small {
+    @include flex-center();
+    @include slab();
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) {
+  //used a function to prevent code reuse
+  //this gives all of the slab properties to all types of slab
+  @mixin slab {
+    @include flex-center();
+    width: 90%;
+    margin: 1%;
+    height: 100px;
+    background-color: $content-color;
+    border: 5px solid #111111;
+    &:hover {
+      background-color: $content-highlight;
+    }
+  }
+  #slab-full {
+    @include flex-center();
+    @include slab();
+  }
+  #slab-medium {
+    @include flex-center();
+    @include slab();
+  }
+  #slab-small {
+    @include flex-center();
+    @include slab();
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  //used a function to prevent code reuse
+  //this gives all of the slab properties to all types of slab
+  //similar to previous UI's, however this takes a width param
+  //as this alters the look of the slabs
+  @mixin slab($width) {
+    @include flex-center();
+    width: $width;
+    height: 100px;
+    margin: 5px;
+    background-color: $content-color;
+    border: 5px solid #111111;
+    &:hover {
+      background-color: $content-highlight;
+    }
+  }
+  #slab-full {
+    @include flex-center();
+    @include slab(91%);
+  }
+  #slab-medium {
+    @include flex-center();
+    @include slab(45%);
+  }
+  #slab-small {
+    @include flex-center(29.7%);
+  }
+}
